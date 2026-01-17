@@ -5,18 +5,19 @@ public class Libro{
     private String codigo;
     private String estados;
     //Constructor 
-    public Libro (String nombre,String autor ,String editorial, String codigo, String estados) {
+    public Libro (String nombre,String autor,String editorial, String codigo, String estados) {
         this.nombre=nombre;
-        this.codigo=codigo;
+        this.autor=autor;
         this.editorial=editorial;
         this.codigo=codigo;
         this.estados= estados;
     }
+    //Geters y Seters de la clase Libro 
     public String getNombre(){
         return nombre;
     }
     public void setNombre(String nombre){
-         this.nombre= nombre
+        this.nombre= nombre;
     }
     public String getAutor(){
         return autor;
@@ -37,9 +38,10 @@ public class Libro{
         this.codigo=codigo;
     }
     public String getEstado(){
-        return estado;
+        return estados;
     }
-    public void setEstado(String estado){
-        this.estado=estado;
+    public void setEstado(String estados){
+        this.estados=estados;
     }
+    
 }

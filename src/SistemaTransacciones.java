@@ -1,4 +1,5 @@
 // 1. Clase para registrar la transacción
+import java.time.LocalDate;
 class Prestamo {
     private Libro libro;
     private Usuario usuario;
@@ -9,7 +10,6 @@ class Prestamo {
         this.usuario = usuario;
         this.fechaEntrega = LocalDate.now().plusDays(15);
     }
-
     public void imprimirTicket() {
         System.out.println("Libro: " + libro.getNombre() + " | Usuario: " + usuario.getNombre());
         System.out.println("Fecha límite de devolución: " + fechaEntrega);
