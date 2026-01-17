@@ -9,6 +9,19 @@ public class Main{
         ap = new Main();
         biblioteca=ap.ingresarLibro();
     }
+    public Usuario ingresarUsuario(){
+        Scanner sc;
+        Usuario persona;
+        String dni;
+        String nombre;
+        sc = new Scanner(System.in);
+        System.out.print("Nombre del usuario: ");
+        nombre = sc.nextLine();
+        System.out.print("DNI: ");
+        dni = sc.nextLine();
+        persona = new Usuario(nombre,dni);
+        return persona;
+    }
     //Metodo para agregar una lista
     public ArrayList<Libro> ingresarLibro(){
         ArrayList <Libro> biblio;
