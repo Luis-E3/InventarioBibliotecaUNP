@@ -4,7 +4,7 @@ class Prestamo {
     private Libro libro;
     private Usuario usuario;
     private LocalDate fechaEntrega;
-
+    //Constructor Prestamo
     public Prestamo(Libro libro, Usuario usuario) {
         this.libro = libro;
         this.usuario = usuario;
