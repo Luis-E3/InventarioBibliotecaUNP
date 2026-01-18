@@ -46,6 +46,19 @@ public class Main{
         persona = new Usuario(nombre,dni);
         return persona;
     }
+    public Usuario ingresarUsuario(){
+        Scanner sc;
+        Usuario persona;
+        String dni;
+        String nombre;
+        sc = new Scanner(System.in);
+        System.out.print("Nombre del usuario: ");
+        nombre = sc.nextLine();
+        System.out.print("DNI: ");
+        dni = sc.nextLine();
+        persona = new Usuario(nombre,dni);
+        return persona;
+    }
     //Metodo para agregar una lista
     public ArrayList<Libro> ingresarLibro(){
         ArrayList <Libro> biblio;
@@ -86,6 +99,7 @@ public class Main{
         nuev_libro= new Libro(titulo,autor,edit,codigo,"DISPONIBLE");
         return nuev_libro;
     }
+<<<<<<< HEAD
     public Libro ingresarLib_Usuario(){
         Scanner teclado;
         String titulo;
@@ -128,3 +142,6 @@ public class Main{
         }
     }
 }
+=======
+}
+>>>>>>> 9d98d919d97e05842345da4d54d948ee52d797bb
