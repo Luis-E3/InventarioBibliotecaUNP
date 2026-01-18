@@ -1,16 +1,16 @@
-public class Libro{
+public class Libro {
     private String nombre;
     private String editorial;
     private String autor;
     private String codigo;
-    private String estados;
+    private String estado;
     //Constructor 
-    public Libro (String nombre,String autor,String editorial, String codigo, String estados) {
+    public Libro (String nombre,String autor,String editorial, String codigo, String estado) {
         this.nombre=nombre;
         this.autor=autor;
         this.editorial=editorial;
         this.codigo=codigo;
-        this.estados= estados;
+        this.estado= estado;
     }
     //Geters y Seters de la clase Libro 
     public String getNombre(){
@@ -38,10 +38,10 @@ public class Libro{
         this.codigo=codigo;
     }
     public String getEstado(){
-        return estados;
+        return estado;
     }
-    public void setEstado(String estados){
-        this.estados=estados;
+    public void setEstado(String estado){
+        this.estado=estado;
     }
     
 }
