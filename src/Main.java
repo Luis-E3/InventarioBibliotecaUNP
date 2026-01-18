@@ -5,37 +5,45 @@ public class Main{
         Main ap;
         int opcion;
         Usuario persona;
-        ArrayList<Libro> biblioteca;
+        Libro libroaux;
+        ArrayList<Libro> bibliotec;
+        bibliotec=null;
         ap = new Main();
         //----------------
         do { 
-            opcion=ap.opcionesbiblio;
+            opcion = ap.opcionesBiblio();
             if(opcion==1){
                  //Ingresar Libro al Inventario
-                biblioteca=ap.ingresarLibro();    
+                bibliotec=ap.generarLibro();    
             }else if(opcion==2){
-                persona=ap.ingresarUsuario();
-                libro1=ap.ingresarLib_Usuario();
-                ap.transaccionLibro(persona,libro1,biblioteca);
+                persona = ap.ingresarUsuario() ;
+                libroaux=ap.ingresarLib_Usuario();
+                ap.transaccionLibro(persona,libroaux,bibliotec);
             } else{
-                ap.procesarDevolucion
-             }
-        } while (opcion==null);
-        biblioteca=ap.ingresarLibro();
+                persona = ap.ingresarUsuario() ;
+                libroaux=ap.ingresarLib_Usuario();
+                ap.procesarDevolucion(persona,libroaux,bibliotec);
+            }
+        } while (opcion!=0);
         System.out.println("Usuarios registrados");
     }
     public int opcionesBiblio(){
         Scanner teclado;
+        int opcion;
         teclado= new Scanner(System.in);
-        do { 
-            System.out.println("INGRESAR LIBRO:1");
-            System.out.println("PRESTAMO LIRBO:2");
+        System.out.print("-------MENU-------");
+        System.out.print("1. INGRESAR LIBROS");
+        System.out.print("2. PRESTAR LIBRO ");
+        System.out.print("3. DEVOLUCION DE LIBRO");
+        System.out.print("0. SALIR");
+        do{
             opcion=teclado.nextInt();
-        } while ((opcion!=2)&&(opcion!=1));
+        }while(opcion>=0||opcion<=3);
+        return opcion;
     }
     public Usuario ingresarUsuario(){
         Scanner sc;
-        Usuario persona;
+        Usuario person;
         String dni;
         String nombre;
         sc = new Scanner(System.in);
@@ -43,24 +51,11 @@ public class Main{
         nombre = sc.nextLine();
         System.out.print("DNI: ");
         dni = sc.nextLine();
-        persona = new Usuario(nombre,dni);
-        return persona;
-    }
-    public Usuario ingresarUsuario(){
-        Scanner sc;
-        Usuario persona;
-        String dni;
-        String nombre;
-        sc = new Scanner(System.in);
-        System.out.print("Nombre del usuario: ");
-        nombre = sc.nextLine();
-        System.out.print("DNI: ");
-        dni = sc.nextLine();
-        persona = new Usuario(nombre,dni);
-        return persona;
+        person = new Usuario(nombre,dni);
+        return person;
     }
     //Metodo para agregar una lista
-    public ArrayList<Libro> ingresarLibro(){
+    public ArrayList<Libro> generarLibro(){
         ArrayList <Libro> biblio;
         Scanner teclado;
         int cantidad;
@@ -75,31 +70,22 @@ public class Main{
         }
         return biblio;
     }
-    //Metodo para ingresar los datos del libro
-    public Libro ingresar(){
+    //Metodo para ingresar los datos del libro a una lista
+    public Libro ingresarLibro(){
+        Scanner teclado;
         Libro nuev_libro;
         String titulo;
         String autor;
-        String edit;
-        String codigo;
-        Scanner leer;
-        leer=new Scanner(System.in);
+        teclado=new Scanner(System.in);
         //Ingreso de titulo
         System.out.print("Título: ");
-        titulo = leer.nextLine();
+        titulo = teclado.nextLine();
         //Ingreso de auto  
         System.out.print("Autor: ");
-        autor= leer.nextLine();
-        //Ingreso de Editorial
-        System.out.print("Editorial: ");
-        edit = leer.nextLine();
-        //Ingreso de Editorial
-        System.out.print("Codigo: ");
-        codigo= leer.nextLine();
-        nuev_libro= new Libro(titulo,autor,edit,codigo,"DISPONIBLE");
+        autor= teclado.nextLine();
+        nuev_libro = new Libro(titulo,autor,"Disponible");
         return nuev_libro;
     }
-<<<<<<< HEAD
     public Libro ingresarLib_Usuario(){
         Scanner teclado;
         String titulo;
@@ -110,18 +96,18 @@ public class Main{
         titulo=teclado.nextLine();
         System.out.print("INGRESE AUTOR");
         autor=teclado.nextLine();
-        busLibro= new Libro(titulo,autor);
+        busLibro= new Libro(titulo,autor," ");
         return busLibro;
     }
     public void transaccionLibro(Usuario persona,Libro libro_busqueda , ArrayList<Libro> biblioteca){
         String titulo;
         Prestamo transaccion;
         titulo=libro_busqueda.getAutor();
-        for(Libro libro|biblioteca){
-            if(libro.getNombre().equals(titulo){
+        for(Libro libro:biblioteca){
+            if(libro.getNombre().equals(titulo)){
                 if (libro.getEstado().equalsIgnoreCase("Disponible")) {
                     libro.setEstado("Prestado"); 
-                    transacion= new Prestamo(libro, persona);
+                    transaccion= new Prestamo(libro, persona);
                     System.out.println("--- PROCESANDO PRÉSTAMO ---");
                     transaccion.imprimirTicket();
                 } else {
@@ -130,18 +116,17 @@ public class Main{
             }
         }
     }
-    public void procesarDevolucion(Libro libro_dev,ArrayList<Libro> biblioteca) {
+    public void procesarDevolucion(Usuario persona,Libro libro_dev,ArrayList<Libro> biblioteca) {
         String titulo ;
-        titulo=libro_dev.getNombre();
-        for(Libro libro|biblioteca){
-            if(libro.getNombre().equals(titulo){
+        Prestamo trans;
+        titulo = libro_dev.getNombre();
+        for(Libro libro:biblioteca){
+            if(libro.getNombre().equals(titulo)){
                 if (libro.getEstado().equalsIgnoreCase("Prestado")) {
                     libro.setEstado("Disponible"); 
-                    transacion= new Prestamo(libro, persona);
+                    trans = new Prestamo(libro,null);
+                }
             }
         }
     }
 }
-=======
-}
->>>>>>> 9d98d919d97e05842345da4d54d948ee52d797bb
